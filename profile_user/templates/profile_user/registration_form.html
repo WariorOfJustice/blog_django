@@ -1,0 +1,9 @@
+{% extends "profile_user/base.html" %}
+{% block content %}
+<h2>Регистрация пользователя</h2>
+<form method="post" class='form-group'>
+	{% csrf_token %}
+	{{ form }}<br>
+	<button type='submit'>Зарегистрироваться</button>
+</form>
+{% endblock %}

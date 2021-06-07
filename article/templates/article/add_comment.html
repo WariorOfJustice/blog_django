@@ -1,0 +1,26 @@
+{% extends "profile_user/base.html" %}
+{% block content %}
+<h2>Форма по добавлению комментария</h2>
+<h3>{{ article.title }}</h3>
+<a href="{% url 'user_page' article.author.user.username %}">{{ article.author }}</a>
+<p>{{ article.rubric }}</p>
+<p>{{ article.created|date:'d.m.Y H:i:s' }}</p>
+<p>{{ article.text }}</p>
+
+<form method='post'>
+	{% csrf_token %}
+	{{ form.text }}<br><br>
+	<button type='submit' formaction="{% url 'add_comment' article.id %}">Добавить комментарий</button>
+</form>
+
+<h4>Комментарии:</h4>
+    {% if comments %}
+        {% for i in comments %}
+            <a href="{% url 'user_page' i.author.user.username %}">{{ i.author }}</a>
+            <p>{{ i.created|date:'d.m.Y H:i:s' }}</p>
+            <p>{{ i }}</p><br>
+        {% endfor %}
+    {% else %}
+        <p>Комментариев пока нет</p>
+    {% endif %}
+{% endblock %}

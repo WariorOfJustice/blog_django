@@ -1,0 +1,22 @@
+{% extends "profile_user/base.html" %}
+{% block content %}
+<h1>Все посты сайта</h1>
+{% for i in context %}
+	<a href="{% url 'article_page' i.id %}"><h3>{{ i.title }}</h3></a>
+	<a href="{% url 'user_page' i.author.user.username %}">{{ i.author }}</a>
+	<p>{{ i.rubric }}</p>
+	<p>{{ i.created|date:'d.m.Y H:i:s' }}</p>
+	<p>{{ i.get_start_text }}</p><br>
+    {% if user.is_authenticated %}
+        {% if user.id == i.author_id %}
+            <a href="{% url 'change_post' i.id %}">Изменить статью</a><br>
+            <a href="{% url 'delete_post' i.id %}">Удалить статью</a><br><br>
+            <a href="{% url 'add_comment' i.id %}">Добавить комментарий</a><br>
+        {% else %}
+            <a href="{% url 'add_comment' i.id %}">Добавить комментарий</a><br>
+        {% endif %}
+    {% endif %}
+	<a href="{% url 'article_page' i.id %}"><h4>Посмотреть комментарии</h4></a>
+{% endfor %}
+
+{% endblock %}
