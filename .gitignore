@@ -1,0 +1,5 @@
+.idea
+__pycache__
+venv
+blog_fbv_2_2/.env
+*.pyc
