@@ -1,5 +1,5 @@
 .idea
 __pycache__
 venv
-blog_fbv_2_2/.env
+blog_drf_1/.env
 *.pyc

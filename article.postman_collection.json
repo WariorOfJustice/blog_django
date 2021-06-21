@@ -1,0 +1,960 @@
+{
+	"info": {
+		"_postman_id": "ff2abee9-09e2-4c7d-8be5-848b2f517fa3",
+		"name": "article",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Создание статьи",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI0MzUwMDI1LCJqdGkiOiJjMzhkZDM1ZWVjMTY0MDI3ODZkOGI3Y2E4ZDlkZjIzNCIsInVzZXJfaWQiOjN9.b7IaYZEh9JEDyK5hzpwpEwqf7ZzVcc6mQR30CrBCRDY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "new post second post from444444user",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "44444",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/create_article/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"create_article",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://127.0.0.1:8000/create_article/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "new post",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "texttttt",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/create_article/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"create_article",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 17 Jun 2021 08:52:43 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"title\": \"new post\",\n    \"text\": \"texttttt\",\n    \"rubric\": \"\",\n    \"author\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Получаем статью",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/article/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"article",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Получаем статью",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/article/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"article",
+								"3",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 17 Jun 2021 09:39:34 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "159"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"author\": \"test_user_1\",\n    \"title\": \"new pos\",\n    \"text\": \"texttttt\",\n    \"created\": \"2021-06-17T08:52:43.186649Z\",\n    \"updated\": \"2021-06-17T09:30:38.968132Z\",\n    \"rubric\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Пытаемся изменить статью без прав",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/article/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"article",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/article/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"article",
+								"3",
+								""
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 17 Jun 2021 09:40:09 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "WWW-Authenticate",
+							"value": "Bearer realm=\"api\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Изменяем статью с правами",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI0MDA5Mjk4LCJqdGkiOiI1ZWU5YTIzYzNhYTI0OWU2YjM4Y2ZjMzk3Y2JmYzkwMCIsInVzZXJfaWQiOjF9.Rhbay9qCCKaTMeBn7w5QOgvtiZSGQdXio8D6z3n1qGI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "New title!!!",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "New text",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/article/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"article",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Изменяем статью с правами",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "New title!!!",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "New text",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/article/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"article",
+								"3",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 17 Jun 2021 09:42:08 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "164"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"author\": \"test_user_1\",\n    \"title\": \"New title!!!\",\n    \"text\": \"New text\",\n    \"created\": \"2021-06-17T08:52:43.186649Z\",\n    \"updated\": \"2021-06-17T09:42:08.097420Z\",\n    \"rubric\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Удаляем пост",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI0MDA5Mjk4LCJqdGkiOiI1ZWU5YTIzYzNhYTI0OWU2YjM4Y2ZjMzk3Y2JmYzkwMCIsInVzZXJfaWQiOjF9.Rhbay9qCCKaTMeBn7w5QOgvtiZSGQdXio8D6z3n1qGI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/article/4/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"article",
+						"4",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Удаляем пост",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/article/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"article",
+								"4",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 17 Jun 2021 09:44:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Добавляем комментарий",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI0MDE3NTQwLCJqdGkiOiI4NDZlOGVlYzcxMWU0YjdkYjkwMjQ4ZWNlY2YxYzQ2MiIsInVzZXJfaWQiOjJ9.fSPjn7ENq3e1ajVUHjP3co5xWIeYj0nRFVvbLAHGodc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "article",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "comment text",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/create_comment/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"create_comment",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Добавляем комментарий",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "article",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "comment text",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/create_comment/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"create_comment",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 17 Jun 2021 11:59:24 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"text\": \"comment text\",\n    \"article\": 3,\n    \"author\": \"test_last_name_1 test_name_1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Получение списка статьей своих подписок",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI0MzQxMjk5LCJqdGkiOiI0MDJmZTY3MGE5M2Y0M2VhYjgwYTYzOTVhMzZkOGNiZCIsInVzZXJfaWQiOjN9.I5qdM4PBqHDEBUT8zxmZFB2cuhvG-aDPU-hQoxPYPLE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/follows_articles/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"follows_articles",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Получение списка статьей своих подписок",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/follows_articles/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"follows_articles",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 06:33:30 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1034"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 7,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"new post second post from 33333 user\",\n        \"text\": \"33333\",\n        \"created\": \"2021-06-18T07:06:11.772944Z\",\n        \"updated\": \"2021-06-18T07:06:11.772944Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 6,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"new post second post from second user\",\n        \"text\": \"texttttt\",\n        \"created\": \"2021-06-17T10:06:11.650394Z\",\n        \"updated\": \"2021-06-17T10:06:11.650394Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 5,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"new post from second user\",\n        \"text\": \"texttttt\",\n        \"created\": \"2021-06-17T10:05:50.703213Z\",\n        \"updated\": \"2021-06-17T10:05:50.703213Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 3,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"New title!!!\",\n        \"text\": \"New text\",\n        \"created\": \"2021-06-17T08:52:43.186649Z\",\n        \"updated\": \"2021-06-17T09:42:08.097420Z\",\n        \"rubric\": \"\",\n        \"comment_set\": [\n            {\n                \"id\": 1,\n                \"author\": \"test_last_name_1 test_name_1\",\n                \"article\": \"3: New title!!!\",\n                \"text\": \"comment text\",\n                \"created\": \"2021-06-17T11:59:24.944746Z\",\n                \"updated\": \"2021-06-17T11:59:24.944746Z\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Получаем статьи конкретного пользователя",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/profile/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"profile",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Получаем статьи конкретного пользователя",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/profile/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"profile",
+								"3",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 08:41:50 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2436"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"first_name\": \"user3\",\n    \"last_name\": \"last_name_user3\",\n    \"img_profile\": null,\n    \"article_set\": [\n        {\n            \"id\": 18,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:33:15.952135Z\",\n            \"updated\": \"2021-06-21T08:33:15.952135Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 17,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:22:38.093124Z\",\n            \"updated\": \"2021-06-21T08:22:38.093124Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 16,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:21:43.596355Z\",\n            \"updated\": \"2021-06-21T08:21:43.596355Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 15,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:21:03.406092Z\",\n            \"updated\": \"2021-06-21T08:21:03.406092Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 14,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:20:37.361076Z\",\n            \"updated\": \"2021-06-21T08:20:37.361076Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 13,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:13:09.466194Z\",\n            \"updated\": \"2021-06-21T08:13:09.466194Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 12,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:10:28.714096Z\",\n            \"updated\": \"2021-06-21T08:10:28.714096Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 11,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:08:29.417206Z\",\n            \"updated\": \"2021-06-21T08:08:29.417206Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 10,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:07:22.695533Z\",\n            \"updated\": \"2021-06-21T08:07:22.695533Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 9,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from444444user\",\n            \"text\": \"44444\",\n            \"created\": \"2021-06-21T08:04:47.344260Z\",\n            \"updated\": \"2021-06-21T08:04:47.344260Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        },\n        {\n            \"id\": 8,\n            \"author\": \"last_name_user3 user3\",\n            \"title\": \"new post second post from 33333 user\",\n            \"text\": \"33333\",\n            \"created\": \"2021-06-21T05:45:12.158465Z\",\n            \"updated\": \"2021-06-21T05:45:12.158465Z\",\n            \"rubric\": \"\",\n            \"comment_set\": []\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Получаем все статьи",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/all_articles/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"all_articles",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Получаем все статьи",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/all_articles/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"all_articles",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 21 Jun 2021 08:48:19 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3376"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 18,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:33:15.952135Z\",\n        \"updated\": \"2021-06-21T08:33:15.952135Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 17,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:22:38.093124Z\",\n        \"updated\": \"2021-06-21T08:22:38.093124Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 16,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:21:43.596355Z\",\n        \"updated\": \"2021-06-21T08:21:43.596355Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 15,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:21:03.406092Z\",\n        \"updated\": \"2021-06-21T08:21:03.406092Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 14,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:20:37.361076Z\",\n        \"updated\": \"2021-06-21T08:20:37.361076Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 13,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:13:09.466194Z\",\n        \"updated\": \"2021-06-21T08:13:09.466194Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 12,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:10:28.714096Z\",\n        \"updated\": \"2021-06-21T08:10:28.714096Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 11,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:08:29.417206Z\",\n        \"updated\": \"2021-06-21T08:08:29.417206Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 10,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:07:22.695533Z\",\n        \"updated\": \"2021-06-21T08:07:22.695533Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 9,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from444444user\",\n        \"text\": \"44444\",\n        \"created\": \"2021-06-21T08:04:47.344260Z\",\n        \"updated\": \"2021-06-21T08:04:47.344260Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 8,\n        \"author\": \"last_name_user3 user3\",\n        \"title\": \"new post second post from 33333 user\",\n        \"text\": \"33333\",\n        \"created\": \"2021-06-21T05:45:12.158465Z\",\n        \"updated\": \"2021-06-21T05:45:12.158465Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 7,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"new post second post from 33333 user\",\n        \"text\": \"33333\",\n        \"created\": \"2021-06-18T07:06:11.772944Z\",\n        \"updated\": \"2021-06-18T07:06:11.772944Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 6,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"new post second post from second user\",\n        \"text\": \"texttttt\",\n        \"created\": \"2021-06-17T10:06:11.650394Z\",\n        \"updated\": \"2021-06-17T10:06:11.650394Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 5,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"new post from second user\",\n        \"text\": \"texttttt\",\n        \"created\": \"2021-06-17T10:05:50.703213Z\",\n        \"updated\": \"2021-06-17T10:05:50.703213Z\",\n        \"rubric\": \"\",\n        \"comment_set\": []\n    },\n    {\n        \"id\": 3,\n        \"author\": \"test_last_name_1 test_name_1\",\n        \"title\": \"New title!!!\",\n        \"text\": \"New text\",\n        \"created\": \"2021-06-17T08:52:43.186649Z\",\n        \"updated\": \"2021-06-17T09:42:08.097420Z\",\n        \"rubric\": \"\",\n        \"comment_set\": [\n            {\n                \"id\": 1,\n                \"author\": \"test_last_name_1 test_name_1\",\n                \"article\": \"3: New title!!!\",\n                \"text\": \"comment text\",\n                \"created\": \"2021-06-17T11:59:24.944746Z\",\n                \"updated\": \"2021-06-17T11:59:24.944746Z\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		}
+	]
+}

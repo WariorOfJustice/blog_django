@@ -1,73 +1,70 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect, get_object_or_404
+from rest_framework import generics, status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from article.models import Article
-from profile_user.forms import UserRegistrationForm
-from profile_user.models import Profile
-from profile_user.services import check_subscription_flag, add_subscriber, delete_subscriber, get_subscriptions_posts, \
-    saving_and_registering_user
+from .models import Profile, ProfileFollow
+from .serializers import RegistrationSerializer, ProfileListSerializer, ProfileDetailSerializer, \
+    ProfileFollowSerializer
 
 
-def registration_view(request):
+class RegistrationView(generics.GenericAPIView):
     """
     Регистрация пользователя.
     """
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            saving_and_registering_user(form)
-            return redirect('login')
-        else:
-            form = UserRegistrationForm(request.POST)
-    else:
-        form = UserRegistrationForm()
-    return render(request, 'profile_user/registration_form.html', {'form': form})
+    serializer_class = RegistrationSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            "success": "User Created Successfully. Now perform Login to get your token"
+        })
 
 
-def user_page_view(request, username):
+class ProfileListView(generics.ListAPIView):
     """
-    Выводит страницу конкретного пользователя с его постами.
-    + если пользователь авторизован, дает возможность подписаться/отписаться.
+    Вывод всех пользователей без статей.
     """
-    user = get_object_or_404(User, username=username)
-    posts = Article.objects.filter(author_id__exact=user.id)
-    referer_page = request.headers['Referer']
-    # ошибка обрабатывает случай, когда current_user - это неавторизованный пользователь.
-    try:
-        subscription_flag = check_subscription_flag(request.user.profile, user)
-    except AttributeError:
-        subscription_flag = None
-    return render(request, 'profile_user/user_posts.html', context={
-        'selected_user': user, 'posts': posts, 'referer_page': referer_page, 'subscription_flag': subscription_flag})
+    queryset = Profile.objects.all()
+    serializer_class = ProfileListSerializer
 
 
-def get_all_users_view(request):
+class ProfileDetailView(APIView):
     """
-    Выводим список всех пользователей.
+    Вывод пользователя с его статьями.
     """
-    users = Profile.objects.all()
-    return render(request, 'profile_user/all_users.html', {'users': users})
+    def get(self, request, id_profile):
+        profile = Profile.objects.get(id=id_profile)
+        serializer = ProfileDetailSerializer(profile)
+        return Response(serializer.data)
 
 
-def add_subscriber_view(request, username):
+class ProfileAddFollowView(generics.GenericAPIView):
     """
-    Добавляем подписку текущему пользователю и подписчика пользователю, на которого подписаны.
+    Добавления подписки на пользователя.
     """
-    add_subscriber(request.user.profile, User.objects.get(username=username))
-    return redirect('user_page', username)
+    serializer_class = ProfileFollowSerializer
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, id_follow_profile, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.initial_data['follow_profile'] = id_follow_profile
+        serializer.initial_data['profile'] = self.request.user.id
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"success": "Follow succeeded"})
 
 
-def delete_subscriber_view(request, username):
+class ProfileDestroyFollowView(APIView):
     """
-    Удаляем подписку текущего пользователя и подписчика пользователя , на которого были подписаны.
+    Удаления подписки на пользователя.
     """
-    delete_subscriber(request.user.profile, User.objects.get(username=username))
-    return redirect('user_page', username)
+    permission_classes = [IsAuthenticated]
 
-
-def get_subscriptions_posts_view(request, user_id):
-    """
-    Выводим посты пользователей, на которых подписан текущий пользователь.
-    """
-    articles_of_subscribe = get_subscriptions_posts(Profile.objects.get(id=user_id))
-    return render(request, 'profile_user/subscriptions.html', {'context': articles_of_subscribe})
+    def delete(self, request, id_follow_profile, *args, **kwargs):
+        id_profile = self.request.user.id
+        instance = ProfileFollow.objects.get(profile=id_profile, follow_profile=id_follow_profile)
+        instance.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

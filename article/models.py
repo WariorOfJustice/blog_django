@@ -13,7 +13,6 @@ class Article(models.Model):
     created = models.DateTimeField('Время создания поста', auto_now_add=True)
     updated = models.DateTimeField('Время обновления поста', auto_now=True)
     rubric = models.CharField('Тема поста', max_length=150, blank=True, db_index=True)
-    objects = models.Manager()
 
     def get_start_text(self):
         """
@@ -32,7 +31,7 @@ class Article(models.Model):
         verbose_name_plural = 'Статьи'
 
     def __str__(self):
-        return self.title
+        return f'{self.id}: {self.title}'
 
 
 class Comment(models.Model):
@@ -44,7 +43,6 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     created = models.DateTimeField('Время создания комментария', auto_now_add=True)
     updated = models.DateTimeField('Время обновления комментария', auto_now=True)
-    objects = models.Manager()
 
     class Meta:
         ordering = ['-updated', '-created']
